@@ -6,10 +6,9 @@ import { navigationItems } from "@/lib/constants/navigation";
 type SidebarProps = {
   isOpen: boolean;
   onClose: () => void;
-  onMenuToggle: () => void;
 };
 
-export function Sidebar({ isOpen, onClose, onMenuToggle }: SidebarProps) {
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <>
       {/* Desktop sidebar */}
@@ -36,11 +35,11 @@ export function Sidebar({ isOpen, onClose, onMenuToggle }: SidebarProps) {
         <aside
           id="mobile-navigation"
           aria-label="Mobile navigation"
-          className={`relative z-10 h-full w-72 max-w-[85vw] border-r border-border bg-surface shadow-xl transition-transform duration-200 ease-out ${
+          className={`border-border bg-surface relative z-10 h-full w-72 max-w-[85vw] border-r shadow-xl transition-transform duration-200 ease-out ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="flex h-16 items-center justify-between border-b border-border px-4">
+          <div className="border-border flex h-16 items-center justify-between border-b px-4">
             <Link
               href="/dashboard"
               onClick={onClose}
@@ -53,22 +52,19 @@ export function Sidebar({ isOpen, onClose, onMenuToggle }: SidebarProps) {
               type="button"
               aria-label="Close navigation"
               onClick={onClose}
-              className="rounded-lg p-2 text-muted hover:bg-black/5 hover:text-foreground"
+              className="text-muted hover:text-foreground rounded-lg p-2 hover:bg-black/5"
             >
               <X aria-hidden="true" className="size-5" />
             </button>
           </div>
 
-          <nav
-            className="space-y-1 p-4"
-            aria-label="Primary mobile navigation"
-          >
+          <nav className="space-y-1 p-4" aria-label="Primary mobile navigation">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={onClose}
-                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-black/5 hover:text-foreground"
+                className="text-muted hover:text-foreground flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-black/5"
               >
                 <item.icon aria-hidden="true" className="size-4" />
                 {item.label}
@@ -84,7 +80,7 @@ export function Sidebar({ isOpen, onClose, onMenuToggle }: SidebarProps) {
 function SidebarContent() {
   return (
     <div className="flex h-full flex-col">
-      <div className="border-b border-border px-6 py-5">
+      <div className="border-border border-b px-6 py-5">
         <Link href="/dashboard" className="font-semibold tracking-tight">
           Finance
         </Link>
@@ -95,7 +91,7 @@ function SidebarContent() {
           <Link
             key={item.href}
             href={item.href}
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-black/5 hover:text-foreground"
+            className="text-muted hover:text-foreground flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-black/5"
           >
             <item.icon aria-hidden="true" className="size-4" />
             {item.label}

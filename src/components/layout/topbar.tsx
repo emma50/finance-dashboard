@@ -5,10 +5,7 @@ type TopbarProps = {
   onMenuToggle: () => void;
 };
 
-export function Topbar({
-  isSidebarOpen,
-  onMenuToggle,
-}: TopbarProps) {
+export function Topbar({ isSidebarOpen, onMenuToggle }: TopbarProps) {
   return (
     <header className="border-border bg-background/95 sticky top-0 z-30 border-b backdrop-blur">
       <div className="flex min-h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -19,7 +16,7 @@ export function Topbar({
             aria-controls="mobile-navigation"
             aria-expanded={isSidebarOpen}
             onClick={onMenuToggle}
-            className="rounded-lg p-2 text-muted hover:bg-black/5 hover:text-foreground lg:hidden"
+            className="text-muted hover:text-foreground rounded-lg p-2 hover:bg-black/5 lg:hidden"
           >
             <Menu aria-hidden="true" className="size-5" />
           </button>
