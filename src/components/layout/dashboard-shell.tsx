@@ -22,10 +22,7 @@ export function DashboardShell({
 
   return (
     <div className="min-h-screen">
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
-      />
+      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
       <div className="lg:pl-64">
         <Topbar isSidebarOpen={isSidebarOpen} onMenuToggle={toggleSidebar} />
