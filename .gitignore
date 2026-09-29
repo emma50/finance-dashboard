@@ -5,6 +5,9 @@ node_modules/
 .next/
 out/
 
+# Supabase
+supabase/.temp/
+
 # Environment
 .env
 .env.local
