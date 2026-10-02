@@ -1,18 +1,17 @@
 select
-    p.proname,
-    pg_get_function_identity_arguments(p.oid) as arguments,
-    p.prosecdef as security_definer,
-    pg_get_functiondef(p.oid) like '%set search_path = ''''' as search_path_is_pinned
-from pg_proc p
+    c.relname as table_name,
+    c.relrowsecurity as rls_enabled,
+    c.relforcerowsecurity as rls_forced
+from pg_class c
 join pg_namespace n
-    on n.oid = p.pronamespace
+    on n.oid = c.relnamespace
 where n.nspname = 'public'
-  and p.proname in (
-      'create_transaction',
-      'complete_transaction',
-      'cancel_transaction',
-      'create_transfer',
-      'complete_transfer',
-      'cancel_transfer'
+  and c.relname in (
+      'profiles',
+      'accounts',
+      'categories',
+      'transfers',
+      'transactions',
+      'budgets'
   )
-order by p.proname;
+order by c.relname;
